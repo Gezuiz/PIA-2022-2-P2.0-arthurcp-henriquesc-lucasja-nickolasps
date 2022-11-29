@@ -17,3 +17,4 @@ MonoBehaviour:
   distanciaPatrulha: 5
   distanciaAtaque: 4
   energia: 5
+  distanciaDesiste: 6

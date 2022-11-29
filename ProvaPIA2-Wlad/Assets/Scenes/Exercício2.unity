@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.2
+    agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.06666667
+    cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -128,6 +128,36 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 5139767573916721997, guid: c2d05d599dd12744db27b1f72a50eb64, type: 3}
   m_PrefabInstance: {fileID: 712086454054157384}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &319750434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319750438}
+  m_Layer: 0
+  m_Name: Casa (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 8
+  m_IsActive: 1
+--- !u!4 &319750438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319750434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.94, y: 1.42, z: -10.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &577017642
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +434,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 170139295638614275, guid: 3398498f7df60bb40a706069416cbf9e, type: 3}
   m_PrefabInstance: {fileID: 170139296727256505}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1642827751
+--- !u!114 &1092402367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092402362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c785c4725b71e44d91294ae5c553024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1888539568
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -412,37 +454,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1642827755}
-  - component: {fileID: 1642827754}
-  - component: {fileID: 1642827753}
-  - component: {fileID: 1642827752}
+  - component: {fileID: 1888539572}
+  - component: {fileID: 1888539571}
+  - component: {fileID: 1888539570}
+  - component: {fileID: 1888539569}
   m_Layer: 0
-  m_Name: Casa
+  m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1642827752
+--- !u!65 &1888539569
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642827751}
+  m_GameObject: {fileID: 1888539568}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1642827753
+--- !u!23 &1888539570
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642827751}
+  m_GameObject: {fileID: 1888539568}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -477,27 +519,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1642827754
+--- !u!33 &1888539571
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642827751}
+  m_GameObject: {fileID: 1888539568}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1642827755
+--- !u!4 &1888539572
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642827751}
+  m_GameObject: {fileID: 1888539568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.94, y: -0.75, z: -10.86}
+  m_LocalPosition: {x: -8.59, y: 2.77, z: -10.05}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &170139296727256505
 PrefabInstance:
@@ -524,7 +566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 170139295638614279, guid: 3398498f7df60bb40a706069416cbf9e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.02
+      value: -12.38
       objectReference: {fileID: 0}
     - target: {fileID: 170139295638614279, guid: 3398498f7df60bb40a706069416cbf9e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -573,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 712086453881639047, guid: c2d05d599dd12744db27b1f72a50eb64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 712086453881639047, guid: c2d05d599dd12744db27b1f72a50eb64, type: 3}
       propertyPath: m_LocalPosition.y
@@ -581,7 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 712086453881639047, guid: c2d05d599dd12744db27b1f72a50eb64, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.16
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 712086453881639047, guid: c2d05d599dd12744db27b1f72a50eb64, type: 3}
       propertyPath: m_LocalRotation.w
@@ -647,7 +689,8 @@ MonoBehaviour:
   agent: {fileID: 196635857}
   AtaqueDistancia: 3
   dano: 5
-  Inimigo: {fileID: 0}
-  Casa: {fileID: 1642827755}
+  Inimigo: {fileID: 11400000, guid: 8756f1b1390186047b94ec652d68d813, type: 2}
+  Casa: {fileID: 319750438}
   energia: 20
+  energiaMAX: 0
   state: 0

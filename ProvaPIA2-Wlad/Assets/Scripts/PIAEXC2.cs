@@ -9,10 +9,11 @@ public class PIAEXC2 : MonoBehaviour
     public GameObject target;
     public NavMeshAgent agent;
     [SerializeField] float AtaqueDistancia = 3;
-    [SerializeField] int dano = 5;
+    [SerializeField] int dano = default;
     public IAEnemy Inimigo;
     public Transform Casa;
     public int energia = default;
+    public int energiaMAX = default;
     #endregion
     public enum States
     {
@@ -27,8 +28,11 @@ public class PIAEXC2 : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
-        
+    {
+        agent.speed = Inimigo.Velocidade;
+        dano = Inimigo.Dano;
+        energia = Inimigo.Energia;
+        energiaMAX = energia;
         
         if (!target)
         {
@@ -40,9 +44,7 @@ public class PIAEXC2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
-
+    
     }
 
     void StateMachine(States _state)
@@ -78,21 +80,21 @@ public class PIAEXC2 : MonoBehaviour
     private IEnumerator EstadoPatrulha()
     {
         agent.isStopped = false;
-        agent.destination = RandomPosition(35);
-
+        agent.destination = RandomPosition(15);
+        Debug.Log("salve");
         yield return new WaitForSeconds(1);
-        if (Vector3.Distance(transform.position, target.transform.position) < AtaqueDistancia * 5)
+        if (Vector3.Distance(transform.position, target.transform.position) < AtaqueDistancia * Inimigo.DistanciaPatrulha)
         {
             StateMachine(States.persegue);
         }
         else
-        if (UnityEngine.Random.value > 0.5)
-        {
-            StateMachine(States.para);
-        }
-        else
         {
             StateMachine(States.patrulha);
+        }
+        
+        if (energia < energiaMAX)
+        {
+            StateMachine(States.descanca);
         }
     }
 
@@ -101,19 +103,24 @@ public class PIAEXC2 : MonoBehaviour
     {
         agent.isStopped = false;
         agent.destination = target.transform.position;
-        yield return new WaitForSeconds(0.1f);
+        
+        yield return new WaitForSecondsRealtime(0.1f);
         if (Vector3.Distance(transform.position, target.transform.position) < AtaqueDistancia)
         {
             StateMachine(States.ataca);
         }
         else
-        if (Vector3.Distance(transform.position, target.transform.position) > AtaqueDistancia * 6)
+        if (Vector3.Distance(transform.position, target.transform.position) > AtaqueDistancia * Inimigo.DistanciaDesiste)
         {
             StateMachine(state = States.para);
         }
         else
         {
             StateMachine(States.persegue);
+        }
+        if (energia < energiaMAX)
+        {
+            StateMachine(States.descanca);
         }
     }
 
@@ -122,29 +129,35 @@ public class PIAEXC2 : MonoBehaviour
         agent.isStopped = true;
         Debug.Log("tomou dano, valor:" + dano);
         energia -= 1;
-        yield return new WaitForSeconds(0.1f);
-        
-        if (Vector3.Distance(transform.position, target.transform.position) > 4)
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        if(energia > 0)
         {
-            StateMachine(States.persegue);
+            if (Vector3.Distance(transform.position, target.transform.position) > Inimigo.DistanciaAtaque)
+            {
+                StateMachine(States.persegue);
+            }
+            else
+            {
+
+                StateMachine(States.ataca);
+            }
         }
         else
         {
-
-            StateMachine(States.ataca);
-        }
-
-        if(energia <= 0) 
-        {
             StateMachine(States.descanca);
+            energia = 0;
         }
+       
+        
     }
 
     IEnumerator EstadoParado()
     {
         agent.isStopped = true;
-        yield return new WaitForSeconds(1f);
-        if (Vector3.Distance(transform.position, target.transform.position) < AtaqueDistancia * 5)
+        yield return new WaitForSeconds(0.5f);
+        
+        if (Vector3.Distance(transform.position, target.transform.position) < AtaqueDistancia * Inimigo.DistanciaPatrulha)
         {
             StateMachine(States.persegue);
         }
@@ -158,25 +171,28 @@ public class PIAEXC2 : MonoBehaviour
         {
             StateMachine(States.para);
         }
+        if (energia < energiaMAX)
+        {
+            StateMachine(States.descanca);
+        }
     }
 
    IEnumerator EstadoDescanco()
    {
-       agent.destination = Casa.position;
-        yield return new WaitForSeconds(5f);
+        agent.isStopped = false;
+        agent.destination = Casa.position;
+
+        yield return new WaitForSecondsRealtime(2f);
         
-        if(energia < 20)
+        while(energia < energiaMAX)
         {
             StateMachine(States.descanca);
-            energia += 5;
+            energia += 2;
         }
-        else
+        
+        if(energia >= energiaMAX)
         {
-            StateMachine(States.para);
+            StateMachine(States.patrulha);
         }
-
-
    }
-
-
 }
